@@ -1,0 +1,18 @@
+services:
+  mysql:    
+      container_name: stefan_mysql
+      image: mysql:latest
+      networks:
+        - backend
+      ports: 
+        - 33336:3306
+      security_opt:
+          - seccomp:unconfined
+      environment:
+        MYSQL_ROOT_PASSWORD: 12345
+        MYSQL_USER: stefan
+      volumes:
+          - ../mysqldb:/var/lib/mysql
+networks:
+  # frontend:
+  backend:  
